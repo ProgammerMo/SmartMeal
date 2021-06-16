@@ -5,9 +5,6 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const search = require('./controllers/search');
 const api = require('./controllers/api');
-const app = express();
-app.use(express.json());
-app.use(cors());
 const db = require('knex')({
     client: 'pg',
     connectionString: process.env.DATABASE_URL,
@@ -15,6 +12,11 @@ const db = require('knex')({
         rejectUnauthorized: false
     }
 });
+
+const app = express();
+app.use(express.json());
+app.use(cors());
+
 
 app.get('/', (req, res) =>{
     res.json('OK');
