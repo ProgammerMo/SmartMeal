@@ -8,14 +8,11 @@ const api = require('./controllers/api');
 const db = require('knex')({
     client: 'pg',
     connection: {
-        connectionString : process.env.DATABASE_URL
-    },
-    ssl: {
-        rejectUnauthorized: false
-      },
-    host: 'ec2-52-19-170-215.eu-west-1.compute.amazonaws.com',
-    user: 'pfhvdmsbtmpvoo',
-    password: '352601895fa54d9b30d01ab877f8455df80710a3166b926ff95a2dc87cd604dc'
+        host : 'ec2-52-19-170-215.eu-west-1.compute.amazonaws.com',
+        user : 'pfhvdmsbtmpvoo',
+        password : '352601895fa54d9b30d01ab877f8455df80710a3166b926ff95a2dc87cd604dc',
+        database : 'd4j8aqedlhhvuj'
+    }
 });
 
 const app = express();
