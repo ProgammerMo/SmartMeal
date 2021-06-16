@@ -34,6 +34,6 @@ app.get('/meals/:calories', (req, res) => { api.fetchMeals(req, res); })
 
 app.get('/meal/:meal', (req, res) => { api.fetchMealImage(req, res); })
 
-app.listen('3001', () =>{
-    console.log('app running')
+app.listen(process.env.PORT || 3001, () =>{
+    console.log('Running')
 })
