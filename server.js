@@ -5,19 +5,16 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const search = require('./controllers/search');
 const api = require('./controllers/api');
-const db = require('knex')({
-    client: 'pg',
-    connection: process.env.DATABASE_URL + `?ssl=true`,
-    migrations: {
-        directory: './db/migrations'
-    },
-    useNullAsDefault: true
-});
-
 const app = express();
 app.use(express.json());
 app.use(cors());
-
+const db = require('knex')({
+    client: 'pg',
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
 
 app.get('/', (req, res) =>{
     res.json('OK');
