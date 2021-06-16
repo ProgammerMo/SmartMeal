@@ -7,13 +7,9 @@ const search = require('./controllers/search');
 const api = require('./controllers/api');
 const db = require('knex')({
     client: 'pg',
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
+    connection: process.env.DATABASE_URL
 });
 
-db.connect();
 const app = express();
 app.use(express.json());
 app.use(cors());
