@@ -8,7 +8,8 @@ const api = require('./controllers/api');
 const db = require('knex')({
     connectionString: process.env.DATABASE_URL,
     ssl: {
-      rejectUnauthorized: false
+      rejectUnauthorized: false,
+      cors: true
     }
 });
 
