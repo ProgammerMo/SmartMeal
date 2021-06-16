@@ -7,6 +7,7 @@ const search = require('./controllers/search');
 const api = require('./controllers/api');
 const db = require('knex')({
     client: 'pg',
+    connectionString: process.env.DATABASE_URL,
     connection: {
         host : 'ec2-52-19-170-215.eu-west-1.compute.amazonaws.com',
         user : 'pfhvdmsbtmpvoo',
