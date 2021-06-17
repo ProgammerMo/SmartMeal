@@ -16,7 +16,7 @@ const handleRegister = (req, res, db, bcrypt) => {
             if (err) {
                 res.status(400).json("Please try again");
             }
-
+/* 
             db('login').insert({
                 hash: hash, 
                 email: emailLowerCase
@@ -30,9 +30,9 @@ const handleRegister = (req, res, db, bcrypt) => {
                 .then(user => {
                     res.json(user[0]);
                 })
-            })
+            }) */
             
-            /*  db.transaction(trx => {
+            db.transaction(trx => {
                trx.insert({ 
                     hash: hash, 
                     email: emailLowerCase
@@ -53,7 +53,7 @@ const handleRegister = (req, res, db, bcrypt) => {
             })
             .catch (() => {
                 res.status(400).json("Please try again"); 
-            }) */
+            }) 
         });
     }
 }

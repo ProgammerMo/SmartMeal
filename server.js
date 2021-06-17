@@ -5,17 +5,12 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const search = require('./controllers/search');
 const api = require('./controllers/api');
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 const db = require('knex')({
     client: 'pg',
-    connection: process.env.DATABASE_URL,
-    ssl : true,
-    pool: {
-        min: 2,
-        max: 10
-    },
-    migrations: {
-        tablename: 'knex_migrations',
-        directory: '.migrations'
+    connection: {
+        connectionString: process.env.DATABASE_URL,
+        ssl: true
     }
 });
 
