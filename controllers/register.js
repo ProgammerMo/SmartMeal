@@ -16,21 +16,7 @@ const handleRegister = (req, res, db, bcrypt) => {
             if (err) {
                 res.status(400).json("Please try again");
             }
-/* 
-            db('login').insert({
-                hash: hash, 
-                email: emailLowerCase
-            })
-            .then(() => {
-                db('users').returning('*').insert({
-                    name: name,
-                    email: emailLowerCase,
-                    joined: new Date()
-                })
-                .then(user => {
-                    res.json(user[0]);
-                })
-            }) */
+
             
             db.transaction(trx => {
                trx.insert({ 
