@@ -17,8 +17,23 @@ const handleRegister = (req, res, db, bcrypt) => {
                 res.status(400).json("Please try again");
             }
 
-            db.transaction(trx => {
-                trx.insert({ 
+            db('login').insert({
+                hash: hash, 
+                email: emailLowerCase
+            })
+            .then(() => {
+                db('users').returning('*').insert({
+                    name: name,
+                    email: emailLowerCase,
+                    joined: new Date()
+                })
+                .then(user => {
+                    res.json(user[0]);
+                })
+            })
+            
+            /*  db.transaction(trx => {
+               trx.insert({ 
                     hash: hash, 
                     email: emailLowerCase
                 })
@@ -37,8 +52,8 @@ const handleRegister = (req, res, db, bcrypt) => {
             .catch (trx.rollback)
             })
             .catch (() => {
-                res.status(400).json("Please try again");
-            }) 
+                res.status(400).json("Please try again"); 
+            }) */
         });
     }
 }
